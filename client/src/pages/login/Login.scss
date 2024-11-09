@@ -1,0 +1,63 @@
+@import '../../App.scss';
+.login__container {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    justify-content: center;
+    height: 60%;
+    img {
+        width: 55%;
+        height: auto;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 45%;
+        text-align: center;
+        background-color: #FFFFFF;
+        h1, form, input {
+            background-color: #ffffff;
+        }
+        img {
+            width: 30px;
+            height: auto;
+        }
+        input::placeholder {
+            @include textFont;
+        }
+        h1 {
+            margin-top: 30%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 25px;
+            input {
+                background-color: #F8F8F8;
+                padding: 12px;
+                margin: 8px;
+                border: none;
+                border-radius: 10px;
+            }
+            button {
+                margin-top: 35px;
+                align-self: center;
+                color: #f8f8f8;
+                border: none;
+                @include headerFont;
+                padding: 12px;
+                border-radius: 10px;
+                background-color: $accentDark;
+                width: 50%;
+                transition: transform 0.3s ease;
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+    }
+}
