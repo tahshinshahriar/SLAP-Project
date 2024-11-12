@@ -42,7 +42,7 @@ const Login: React.FC = () => {
                 navigate('/home')
             }
         } catch (error) {
-            
+            console.log(error)
         }
 
     }
