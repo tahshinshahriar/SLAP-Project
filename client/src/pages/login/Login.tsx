@@ -56,7 +56,7 @@ const Login: React.FC = () => {
             <form onSubmit={loginUser}>
                 <input 
                     type="email" 
-                    placeholder='Slap ID'
+                    placeholder='Slap ID or Email'
                     value={data.email}
                     onChange={(e) => setData({...data, email: e.target.value})}
                 />

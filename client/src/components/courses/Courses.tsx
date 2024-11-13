@@ -45,6 +45,7 @@ const Courses = () => {
           <h1>Courses</h1>
           {dummyCourses.map((course) => (
             <div className="course__content">
+              {/* to={`/home/courses/${course._id}/assignments`} */}
               <Link to='/home/courses/assignments'><p>{course.courseCode} - {course.courseName}</p></Link>
             </div>
           ))}

@@ -21,11 +21,13 @@ const Logout = () => {
             const res = await axios.get('/logout')
             console.log(res)
             console.log("User logged out");
+            // Integrate first
+            // navigate('/')
             closeModal();
-            navigate('/')
         } catch (error) {
             console.log(error)
         }
+        navigate('/')
     };
     return (
         <div className="logout__container">
