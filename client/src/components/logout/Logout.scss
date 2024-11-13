@@ -1,0 +1,66 @@
+@import '../../App.scss';
+
+.logout__container {
+    button {
+        background-color: $accentLight;
+        color: $bgColorLight;
+        border: none;
+        @include headerFont;
+        padding: 12px;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+    }
+    .modal__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal__content {
+        background-color: $bgColorLight;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 300px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    
+        h3 {
+            @include headerFont;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+    
+        .modal__buttons {
+            display: flex;
+            justify-content: space-between;
+    
+            .confirm__button {
+                padding: 10px 20px;
+                background-color: $accentLight;
+                color: $bgColorLight;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            .cancel__button {
+                padding: 10px 20px;
+                background-color: #cccccc;
+                color: $textColor;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}

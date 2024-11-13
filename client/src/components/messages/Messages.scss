@@ -1,0 +1,28 @@
+@import '../../App.scss';
+.messages__container {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    .msg__header {
+        @include textBold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            font-size: 25px;
+            border: none;
+            background-color: transparent;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .message__contents {
+        padding: 10px;
+        // Temporary before integration
+        p {
+            @include textFont;
+            margin: 8px 0;
+        }
+    }
+}
