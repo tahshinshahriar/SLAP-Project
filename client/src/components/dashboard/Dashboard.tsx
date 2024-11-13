@@ -6,21 +6,7 @@ import Messages from "../messages/Messages";
 import './Dashboard.scss'
 
 const Dashboard = () => {
-  interface Messages {
-    message: string;
-  }
-
-  const dummyMessage: Messages [] = [
-    { message: "- Quiz 2 updated - Class 2" },
-    { message: "- System will be down Saturday from 6am - 8am" },
-    { message: "- Project instructions uploaded - Class 1" },
-
-  ]
   const context = useContext(UserContext);
-  const [openMessages, setOpenMessages] = useState(true)
-  const toggleMessages = () => {
-    setOpenMessages(prevState => !prevState);
-  };
 
   if (!context) {
     return <div>Loading...</div>; 
@@ -35,21 +21,8 @@ const Dashboard = () => {
           {/* {!!user && (<h1>{user.firstName}</h1>)} */}
           <h1>Samih</h1>
         </div>
-        <div className="messages__container">
-          <div className="msg__header">
-            <p>Messages</p>
-            <button onClick={toggleMessages}>{ openMessages ? "-" : "+"}</button>
-          </div>
-          {/* {openMessages && (<div className="msg__content">
-            <hr />
-            <Messages /> 
-          </div>)} */}
-          {openMessages && (
-            <div className="msg__content">
-            <hr />
-            <Messages />
-            </div>
-          )}
+        <div className="message__container">
+          <Messages />
         </div>
       </div>
       <div className="course-button__container">

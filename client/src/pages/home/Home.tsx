@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 import Navbar from '../../components/navigation/Navbar'
 import Dashboard from '../../components/dashboard/Dashboard'
 import Courses from '../../components/courses/Courses'
+import Assignments from '../../components/assignments/Assignments'
 
 const Home = () => {
   return (
@@ -11,6 +12,8 @@ const Home = () => {
             <Routes>
                 <Route path='dashboard' element={<Dashboard />}/>
                 <Route path='courses' element={<Courses />}/>
+                <Route path='courses/assignments' element={<Assignments />}/>
+                {/* <Route path='courses/:courseId/assignments' element={<Assignments />}/> */}
             </Routes>
             <Outlet />
         </div>

@@ -14,6 +14,11 @@ const Messages: React.FC = () => {
     { message: "- Project instructions uploaded - Class 1" },
 
     ]
+
+    const [openMessages, setOpenMessages] = useState(true)
+    const toggleMessages = () => {
+        setOpenMessages(prevState => !prevState);
+    };
     // interface Message {
     //     _id: string;
     //     message: string;
@@ -38,10 +43,19 @@ const Messages: React.FC = () => {
     //         <p key={message._id}>- {message.message}</p>
     //     ))}
     // </div>
-    <div className="message__contents">
-         {dummyMessage.map((msgs) => (
-                <p>{msgs.message}</p>
-              ))}
+    <div className="messages__container">
+        <div className="msg__header">
+                <p>Messages</p>
+                <button onClick={toggleMessages}>{ openMessages ? "-" : "+"}</button>
+        </div>
+        {openMessages && (
+            <div className="message__contents">
+            <hr />
+            {dummyMessage.map((msgs) => (
+                    <p>{msgs.message}</p>
+                ))}
+            </div>
+          )}
     </div>
   )
 }
