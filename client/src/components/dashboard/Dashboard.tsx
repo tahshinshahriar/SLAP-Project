@@ -1,8 +1,7 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "../../../context/userContext"
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa6";
-import axios from 'axios';
 import Messages from "../messages/Messages";
 import './Dashboard.scss'
 
@@ -19,21 +18,6 @@ const Dashboard = () => {
   ]
   const context = useContext(UserContext);
   const [openMessages, setOpenMessages] = useState(true)
-
-  // const [messageContent, setMessageContent] = useState(null);
-
-  // useEffect(() => {
-  //     const fetchMessages = async () => {
-  //         try {
-  //             const response = await axios.get('/user/messages');
-  //             setMessageContent(response.data);
-  //         } catch (error) {
-  //             console.error("Error fetching messages:", error);
-  //         }
-  //     };
-      
-  //     fetchMessages();
-  // }, []);
   const toggleMessages = () => {
     setOpenMessages(prevState => !prevState);
   };
@@ -57,17 +41,13 @@ const Dashboard = () => {
             <button onClick={toggleMessages}>{ openMessages ? "-" : "+"}</button>
           </div>
           {/* {openMessages && (<div className="msg__content">
-          <hr />
-          {messageContent && messageContent.map((message) => (
-                <Messages key={message._id} messages={message}/>
-            ))}
+            <hr />
+            <Messages /> 
           </div>)} */}
           {openMessages && (
             <div className="msg__content">
             <hr />
-              {dummyMessage.map((msgs) => (
-                <p>{msgs.message}</p>
-              ))}
+            <Messages />
             </div>
           )}
         </div>

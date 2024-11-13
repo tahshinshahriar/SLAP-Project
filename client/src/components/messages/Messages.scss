@@ -1,5 +1,5 @@
 @import '../../App.scss';
-p {
+.message__contents p {
     @include textFont;
     margin: 8px 0;
 }
