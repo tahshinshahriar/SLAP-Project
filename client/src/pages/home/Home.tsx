@@ -9,7 +9,7 @@ const Home = () => {
         <Navbar />
         <div className="dashboard__content">
             <Routes>
-                <Route path='user' element={<Dashboard />}/>
+                <Route path='dashboard' element={<Dashboard />}/>
                 <Route path='courses' element={<Courses />}/>
             </Routes>
             <Outlet />

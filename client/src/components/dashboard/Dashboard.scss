@@ -1,0 +1,73 @@
+@import '../../App.scss';
+
+.dash__container {
+    display: flex;
+    justify-content: space-around;
+    margin: 6%;
+    .article__container {
+        width: 55%;
+        h2 {
+            @include runnerFont;
+            font-size: 45px;
+        }
+        h1 {
+            margin-top: 6px;
+            font-size: 90px;
+        }
+        .messages__container {
+            margin-top: 35px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            padding: 10px;
+            .msg__header {
+                @include textBold;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                button {
+                    font-size: 25px;
+                    border: none;
+                    background-color: transparent;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .msg__content {
+                padding: 10px;
+                // Temporary before integration
+                p {
+                    @include textFont;
+                    margin: 8px 0;
+                }
+            }
+        }
+    }
+    .course-button__container {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 80%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: unset;
+        }
+        button {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-size: 20px;
+            background-color: $accentDark;
+            @include buttonStyle;
+            svg {
+                font-size: 15px;
+                padding-top: 6px;
+            }
+        }
+    }
+}

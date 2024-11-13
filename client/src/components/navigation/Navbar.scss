@@ -1,0 +1,22 @@
+@import '../../App.scss';
+
+.nav__container {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $bgColorLight;
+    img {
+        width: 40px;
+        height: auto;
+    }
+    .functions__container {
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+        svg {
+            margin-right: 20px;
+            font-size: 30px;
+        }
+    }
+}

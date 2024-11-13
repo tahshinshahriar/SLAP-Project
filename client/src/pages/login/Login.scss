@@ -1,24 +1,14 @@
 @import '../../App.scss';
 .login__container {
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: auto;
+    @include pageCard;
     .image__container{
         display: flex;
         justify-content: center;
         align-items: center;
         width: 55%;
-        background-color: #F8F8F8;
+        background-color: $bgColorLight;
         img {
-            background-color: #F8F8F8;
+            background-color: $bgColorLight;
             height: auto;
             width: 90%;
     }
@@ -57,7 +47,7 @@
                 padding-right: 5px;
             }
             input {
-                background-color: #F8F8F8;
+                background-color: $bgColorLight;
                 padding: 12px;
                 margin: 8px;
                 border: none;
@@ -74,7 +64,7 @@
                 }
 
                 span {
-                    background-color: #F8F8F8;
+                    background-color: $bgColorLight;
                     position: absolute;
                     right: 0.8rem;
                     top: 55%;
@@ -83,7 +73,7 @@
                     font-size: 1.2rem; 
                     color: #888; 
                     svg{
-                        background-color: #F8F8F8;
+                        background-color: $bgColorLight;
                     }
                     &:hover {
                         color: #333; 
@@ -91,20 +81,10 @@
                 }
             }
             button {
-                margin-top: 35px;
-                align-self: center;
-                color: #f8f8f8;
-                border: none;
-                @include headerFont;
-                padding: 12px;
-                border-radius: 10px;
                 background-color: $accentDark;
                 width: 50%;
-                transition: transform 0.3s ease;
-                &:hover {
-                    cursor: pointer;
-                    transform: scale(1.1);
-                }
+                @include buttonStyle;
+                
             }
         }
 

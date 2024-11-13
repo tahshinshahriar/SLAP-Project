@@ -3,7 +3,8 @@
 $bgColor: #E5E5E5;
 $textColor: #191815;
 $accentDark: #002443;
-$accentLight: #FF9B95;
+$accentLight: #ff5a5f;
+$bgColorLight: #F8F8F8;
 
 @font-face {
     font-family: 'Futura';
@@ -32,6 +33,35 @@ $accentLight: #FF9B95;
 @mixin removeDecor {
     text-decoration: none;
     color: unset;
+}
+
+@mixin pageCard {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: auto;
+}
+
+@mixin buttonStyle {
+    margin-top: 35px;
+    align-self: center;
+    color: $bgColorLight;
+    border: none;
+    @include headerFont;
+    padding: 12px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
 }
 
 h1{
