@@ -1,29 +1,13 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require('mongoose');
 
-const CourseSchema = new mongoose.Schema({
-    courseName: {
-        type: String,
-        required: True
-    },
+const courseSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    code: { type: String, required: true, unique: true },
+    description: { type: String },
+    startDate: { type: Date },
+    endDate: { type: Date },
+    students: { type: String}, // Store slapID instead of ObjectId
+    instructors: [{ type: String, ref: 'User' }], // Store slapID instead of ObjectId
+});
 
-    courseCode:{
-        type: String,
-        required: True,
-        unique: True
-    },
-    instructors:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-
-    students: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    assignments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Assignment'
-    }]
-})
-
-module.exports = mongoose.model('Course', CourseSchema);
+module.exports = mongoose.model('Course', courseSchema);

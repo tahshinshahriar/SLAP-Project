@@ -1,31 +1,10 @@
 const mongoose = require('mongoose');
 
 const assignmentSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    course: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course',
-        required: true
-    },
-    dueDate: {
-        type: Date,
-        required: true
-    },
-    submissions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Submission'
-    }],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    courseCode: { type: String, ref: 'Course', required: true }, // Use course code instead of course ID
+    title: { type: String, required: true }, // Title of the assignment
+    description: { type: String }, // Description of the assignment
+    dueDate: { type: Date, required: true } // Due date for the assignment
 });
 
 module.exports = mongoose.model('Assignment', assignmentSchema);

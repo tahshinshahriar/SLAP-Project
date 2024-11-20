@@ -4,9 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { toast } from 'react-hot-toast'
 import axios from 'axios';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/userContext';
 
 interface UserData {
-    email: string,
+    slapID: string,
     password: string
 
 }
@@ -14,9 +16,10 @@ interface UserData {
 const Login: React.FC = () => {
     const navigate = useNavigate()
     const [data, setData] = useState<UserData>({
-        email: '',
+        slapID: '',
         password: ''
     })
+    const { setUser } = useContext(UserContext);
     
     // State to manage password visibility
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -28,18 +31,24 @@ const Login: React.FC = () => {
 
     const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const { email, password } = data
+        const { slapID, password } = data
         try {
             const {data} = await axios.post('/login', {
-                email,
+                slapID,
                 password
             });
             if (data.error) {
                 toast.error(data.error)
             } else {
-                setData({email: '', password: ''})
+                setData({slapID: '', password: ''})
+                localStorage.setItem('token', data.token);
+                // Fetch the user profile
+                const profileResponse = await axios.get('/profile', {
+                    headers: { Authorization: `Bearer ${data.token}` }
+                });
+                setUser(profileResponse.data);
                 toast.success("Login Successful")
-                navigate('/home')
+                navigate('/home/dashboard')
             }
         } catch (error) {
             console.log(error)
@@ -55,10 +64,10 @@ const Login: React.FC = () => {
             <h1>Login To Your Account</h1>  
             <form onSubmit={loginUser}>
                 <input 
-                    type="email" 
-                    placeholder='Slap ID or Email'
-                    value={data.email}
-                    onChange={(e) => setData({...data, email: e.target.value})}
+                    type="text" 
+                    placeholder='Slap ID'
+                    value={data.slapID}
+                    onChange={(e) => setData({...data, slapID: e.target.value})}
                 />
                 <div className="password__container">
                     <input 

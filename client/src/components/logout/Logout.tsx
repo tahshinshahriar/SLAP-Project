@@ -18,16 +18,13 @@ const Logout = () => {
     // Function to handle logout action
     const handleLogout = async () => {
         try {
-            const res = await axios.get('/logout')
-            console.log(res)
-            console.log("User logged out");
+            localStorage.removeItem('token');
             // Integrate first
-            // navigate('/')
+            navigate('/')
             closeModal();
         } catch (error) {
             console.log(error)
         }
-        navigate('/')
     };
     return (
         <div className="logout__container">

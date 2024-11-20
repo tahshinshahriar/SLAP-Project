@@ -18,8 +18,8 @@ const Dashboard = () => {
         <div className="article">
           <h2>welcome back,</h2>
           {/* Need to integrate with backend*/}
-          {/* {!!user && (<h1>{user.firstName}</h1>)} */}
-          <h1>Samih</h1>
+          {!!user && (<h1>{user.name}</h1>)}
+          {/* <h1>Samih</h1> */}
         </div>
         <div className="message__container">
           <Messages />
