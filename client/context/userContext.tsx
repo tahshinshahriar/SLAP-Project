@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createContext, useState, useEffect, ReactNode } from 'react';
 
 interface CurrentUserContextType {
-    _id: string; // Use this if you prefer to keep MongoDB naming
+    _id: string; 
     email: string;
     name: string;
     role: 'student' | 'instructor' | 'admin';
