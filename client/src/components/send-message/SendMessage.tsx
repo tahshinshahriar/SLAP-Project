@@ -25,9 +25,11 @@ const SendMessage: React.FC<Props> = ({ senderId }) => {
       toast.success('Message sent successfully!');
       setContent(''); // Clear the input field
       setRecipientEmail(''); // Clear the email field
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error('Failed to send message. Please try again.');
+      const errorMessage =
+      error.response?.data?.error || 'An unexpected error occurred';
+      toast.error(errorMessage);
     }
   };
 

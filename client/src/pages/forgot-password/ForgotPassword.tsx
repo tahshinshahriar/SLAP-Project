@@ -16,8 +16,10 @@ function ForgotPassword() {
                 toast.success("Password reset request sent to the administrator.")
                 navigate('/')
             }
-        } catch (error) {
-            console.error("Error sending password reset request:", error);
+        } catch (error: any) {
+            const errorMessage =
+            error.response?.data?.error || 'An unexpected error occurred';
+            toast.error(errorMessage);
         }
     };
 

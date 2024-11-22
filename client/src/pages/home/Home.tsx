@@ -7,7 +7,7 @@ import Dashboard from '../../components/dashboard/Dashboard'
 import Courses from '../../components/courses/Courses'
 import Assignments from '../../components/assignments/Assignments'
 import SendMessage from '../../components/send-message/SendMessage'
-import ChangePassword from '../../components/change-password/ChangePassword'
+import ChangePassword from '../changePassword/ChangePassword'
 
 const Home = () => {
   const userContext = useContext(UserContext);
