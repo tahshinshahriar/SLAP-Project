@@ -6,20 +6,19 @@ import Messages from "../messages/Messages";
 import './Dashboard.scss'
 
 const Dashboard = () => {
-  const context = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
-  if (!context) {
-    return <div>Loading...</div>; 
+  if (!userContext) {
+    return <div>Loading...</div>;
   }
-  const { user } = context;
+
+  const { user } = userContext;
   return (
     <div className="dash__container">
       <div className="article__container">
         <div className="article">
           <h2>welcome back,</h2>
-          {/* Need to integrate with backend*/}
-          {/* {!!user && (<h1>{user.firstName}</h1>)} */}
-          <h1>Samih</h1>
+          <h1>{user?.name}</h1>
         </div>
         <div className="message__container">
           <Messages />
