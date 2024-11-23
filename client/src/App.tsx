@@ -8,8 +8,20 @@ import axios from 'axios'
 import { UserContextProvider } from '../context/userContext'
 import AdminPage from './pages/admin/AdminPage'
 
-axios.defaults.baseURL = 'http://localhost:5001/api/auth'
+axios.defaults.baseURL = 'http://localhost:5000/api/auth'
 axios.defaults.withCredentials = true
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 function App() {
   return (

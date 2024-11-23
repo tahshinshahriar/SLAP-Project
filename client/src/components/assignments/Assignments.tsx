@@ -17,7 +17,7 @@ const Assignments: React.FC = () => {
     useEffect(() => {
         const fetchAssignments = async () => {
             try {
-                const response = await axios.get(`/assignment/course/:courseCode`);
+                const response = await axios.get(`/assignments/${courseId}`);
                 setAssignments(response.data);
             } catch (error) {
                 console.error("Error fetching assignments:", error);

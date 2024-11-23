@@ -28,8 +28,9 @@ const Logout = () => {
     // Function to handle logout action
     const handleLogout = async () => {
         try {
-            await logout(); // Call the logout function from context
-            navigate('/'); // Redirect to home or login page
+            await logout();
+            localStorage.removeItem('token');
+            navigate('/'); 
             closeModal();
         } catch (error) {
             console.log('Error during logout:', error);

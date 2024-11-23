@@ -44,6 +44,9 @@ const Login: React.FC = () => {
             if (response.error) {
                 toast.error(response.error);
             } else {
+                
+                //Save the authorization token
+                localStorage.setItem('token', response.token);
                 // Update context with logged-in user data
                 setUser(response);
 
