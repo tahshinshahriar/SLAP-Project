@@ -8,7 +8,7 @@ import axios from 'axios'
 import { UserContextProvider } from '../context/userContext'
 import AdminPage from './pages/admin/AdminPage'
 
-axios.defaults.baseURL = 'http://localhost:5000/api/auth'
+axios.defaults.baseURL = 'http://localhost:5001/api/auth'
 axios.defaults.withCredentials = true
 
 function App() {

@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import './Logout.scss';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../context/userContext'; // Update with your actual context path
+import { UserContext } from '../../../context/userContext'; 
 
 const Logout = () => {
     const navigate = useNavigate();

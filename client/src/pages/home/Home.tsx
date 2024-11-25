@@ -24,8 +24,7 @@ const Home = () => {
             <Routes>
                 <Route path='dashboard' element={<Dashboard />}/>
                 <Route path='courses' element={<Courses />}/>
-                <Route path='courses/assignments' element={<Assignments />}/>
-                {/* <Route path='courses/:courseId/assignments' element={<Assignments />}/> */}
+                <Route path="/courses/:courseId/assignments" element={<Assignments />} />
                 <Route path='courses/send-message' element={<SendMessage senderId={user?._id}/>}/>
                 <Route path='courses/change-password' element={<ChangePassword />}/>
             </Routes>
