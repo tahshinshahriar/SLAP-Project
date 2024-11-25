@@ -3,29 +3,39 @@ import { Link } from "react-router-dom"
 import Messages from "../messages/Messages"
 import './Courses.scss'
 import axios from "axios"
-const Courses = () => {
-  // Temporary
-  interface Courses {
-    _id: number,
-    courseCode: string,
-    courseName: string
-  }
-  const [courses, setCourses] = useState<Courses []>([]);
+
+interface Course {
+  _id: string;
+  courseCode: string;
+  courseName: string;
+}
+
+const Courses: React.FC = () => {
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCourses = async () => {
+
       try {
-        const response = await axios.get('/courses',{
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
+        const response = await axios.get('/show-courses', { withCredentials: true }); 
         setCourses(response.data);
-      } catch (error) {
-        console.error('Error fetching courses:', error);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching courses:', err);
+        setError('Failed to load courses.');
+        setLoading(false);
       }
     };
 
     fetchCourses();
-  }, []);
+  }, []); // Refetch courses when user changes
+
+  if (loading) return <div>Loading courses...</div>;
+  if (error) return <div>{error}</div>;
+
+  
   return (
     <div className="courses__container">
       <div className="course__content__container">
@@ -45,5 +55,7 @@ const Courses = () => {
   );
 }
 
-
 export default Courses
+
+
+
