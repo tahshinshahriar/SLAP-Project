@@ -39,24 +39,34 @@ const Login: React.FC = () => {
     const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { email, password } = data;
+    
         try {
             const { data: response } = await axios.post('/login', { email, password }, { withCredentials: true });
+            
             if (response.error) {
                 toast.error(response.error);
             } else {
                 setUser(response);
-
+    
                 // Clear form data
                 setData({ email: '', password: '' });
-
+    
                 toast.success("Login Successful");
-                navigate('/home/dashboard');
+    
+                // Navigate based on user role
+                if (response.role === 'student') {
+                    navigate('/home/dashboard');
+                } else if (response.role === 'instructor') {
+                    navigate('/home/instructor-dash');
+                } else {
+                    navigate('/home/admin-dash');
+                }
             }
         } catch (error) {
             console.error('Login error:', error);
             toast.error('An error occurred during login. Please try again.');
         }
-    };
+    };    
 
     return (
         <div className="login__container">

@@ -6,7 +6,6 @@ import ForgotPassword from './pages/forgot-password/ForgotPassword'
 import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 import { UserContextProvider } from '../context/userContext'
-import AdminPage from './pages/admin/AdminPage'
 
 axios.defaults.baseURL = 'http://localhost:5001/api/auth'
 axios.defaults.withCredentials = true
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />}/>
           <Route path='/home/*' element={<Home />}/>
-          <Route path='/admin' element={<AdminPage />}/>
           <Route path='/reset-password' element={<ForgotPassword />}/>
         </Routes>
       </div>

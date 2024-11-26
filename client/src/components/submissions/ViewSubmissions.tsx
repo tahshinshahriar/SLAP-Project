@@ -19,7 +19,6 @@ const ViewSubmissions: React.FC<{ assignmentId: string }> = ({ assignmentId }) =
         const fetchSubmissions = async () => {
         try {
             const response = await axios.get(`/assignments/${assignmentId}/submissions`, { withCredentials: true });
-            console.log(response.data); // Log the response to verify the data
             setSubmissions(response.data);
             setLoading(false);
         } catch (err) {

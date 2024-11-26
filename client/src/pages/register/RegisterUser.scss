@@ -1,0 +1,82 @@
+@import '../../App.scss';
+
+.register-user {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: $bgColorLight;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: $accentDark;
+      @include headerFont;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%; // Ensure form takes the full width of the container
+  
+      label {
+        font-weight: bold;
+        color: $textColor;
+        @include textFont;
+        align-self: flex-start; // Align labels to the left
+      }
+  
+      input,
+      select,
+      button {
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid $accentDark;
+        border-radius: 5px;
+        @include textFont;
+        color: $textColor;
+        width: 100%; // Ensure input fields take the full width
+        max-width: 400px; // Set a maximum width for the input fields
+  
+        &:focus {
+          outline: none;
+          border-color: $accentLight;
+          box-shadow: 0 0 5px rgba($accentLight, 0.5);
+        }
+      }
+  
+      input,
+      select {
+        background-color: $bgColorLight;
+      }
+  
+      button {
+        background-color: $accentDark;
+        color: $bgColorLight;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        @include buttonStyle;
+        max-width: 200px; // Button max width
+  
+        &:hover {
+          background-color: $accentLight;
+          transform: scale(1.1);
+        }
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+    }
+}
+  

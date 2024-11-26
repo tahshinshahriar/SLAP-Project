@@ -1,0 +1,71 @@
+@import '../../App.scss';
+
+.admin-dashboard {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $bgColorLight;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $accentDark;
+    @include headerFont;
+  }
+
+  .buttons__container{
+    display: flex;
+  }
+
+  .register-button, .create-course-button, .edit-course-button {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.75rem 1.5rem;
+    background-color: $accentDark;
+    color: $bgColorLight;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    @include buttonStyle;
+
+    &:hover {
+      background-color: $accentLight;
+      transform: scale(1.05);
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+    th,
+    td {
+      border: 1px solid $accentDark;
+      padding: 0.75rem;
+      text-align: left;
+      color: $textColor;
+      @include textFont;
+    }
+
+    th {
+      background-color: $bgColor;
+      color: $textColor;
+      font-weight: bold;
+      @include textBold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: $bgColorLight;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: $bgColor;
+    }
+  }
+}
