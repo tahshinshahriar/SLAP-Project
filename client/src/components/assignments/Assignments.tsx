@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import './Assignments.scss';
+import FileUpload from "../submissions/FileUpload";
+import ViewSubmissions from "../submissions/ViewSubmissions";
 
 interface Assignment {
   _id: string;
@@ -54,6 +56,8 @@ const Assignments: React.FC = () => {
                   {assignment.instructions.fileName}
                 </a>
               )}
+              <FileUpload assignmentId={assignment._id} />
+              <ViewSubmissions assignmentId={assignment._id} />
             </li>
           ))}
         </ul>
