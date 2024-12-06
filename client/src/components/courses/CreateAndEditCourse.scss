@@ -1,0 +1,60 @@
+@import '../../App.scss';
+
+.create-course,
+.edit-course {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $bgColorLight;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $accentDark;
+    @include headerFont;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    label {
+      font-weight: bold;
+      color: $textColor;
+      @include textFont;
+    }
+
+    input,
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid $accentDark;
+      border-radius: 5px;
+      @include textFont;
+
+      &:focus {
+        outline: none;
+        border-color: $accentLight;
+        box-shadow: 0 0 5px rgba($accentLight, 0.5);
+      }
+    }
+
+    button {
+      background-color: $accentDark;
+      color: $bgColorLight;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      @include buttonStyle;
+
+      &:hover {
+        background-color: $accentLight;
+        transform: scale(1.05);
+      }
+    }
+  }
+}

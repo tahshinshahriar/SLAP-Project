@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './Logout.scss';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
-
+import { UserContext } from '../../../context/userContext'; 
 
 const Logout = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    // Access logout function from context
+    const userContext = useContext(UserContext);
+
+    if (!userContext) {
+        console.error('UserContext is not available');
+        return null;
+    }
+
+    const { logout } = userContext;
+
     // State to control modal visibility
     const [showModal, setShowModal] = useState(false);
 
@@ -18,14 +28,15 @@ const Logout = () => {
     // Function to handle logout action
     const handleLogout = async () => {
         try {
+            await logout();
             localStorage.removeItem('token');
-            // Integrate first
-            navigate('/')
+            navigate('/'); 
             closeModal();
         } catch (error) {
-            console.log(error)
+            console.log('Error during logout:', error);
         }
     };
+
     return (
         <div className="logout__container">
             <button onClick={openModal}>Log Out</button>
@@ -47,6 +58,6 @@ const Logout = () => {
             )}
         </div>
     );
-}
+};
 
-export default Logout
+export default Logout;

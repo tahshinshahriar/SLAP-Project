@@ -19,10 +19,25 @@
     }
     .message__contents {
         padding: 10px;
-        // Temporary before integration
+        max-height: 200px;
+        overflow-y: auto; // Enable scrolling when content overflows
+
+
         p {
             @include textFont;
             margin: 8px 0;
+        }
+
+        // Optional: Customize the scrollbar for a better user experience
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $accentDark;
         }
     }
 }

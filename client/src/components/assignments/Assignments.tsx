@@ -1,48 +1,72 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import './Assignments.scss'
+import './Assignments.scss';
+import FileUpload from "../submissions/FileUpload";
+import ViewSubmissions from "../submissions/ViewSubmissions";
 
 interface Assignment {
-    _id: string;
-    title: string;
-    description: string;
-    dueDate: string;
+  _id: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  instructions: {
+    fileName: string;
+    filePath: string;
+  };
 }
 
 const Assignments: React.FC = () => {
-    const { courseId } = useParams<{ courseId: string }>();
-    const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const { courseId } = useParams<{ courseId: string }>(); // Get course ID from route params
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchAssignments = async () => {
-            try {
-                const response = await axios.get(`/api/courses/${courseId}/assignments`);
-                setAssignments(response.data);
-            } catch (error) {
-                console.error("Error fetching assignments:", error);
-            }
-        };
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const response = await axios.get(`/courses/${courseId}/assignments`, { withCredentials: true });
+        setAssignments(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching assignments:', err);
+        // setError('Failed to load assignments.');
+        setLoading(false);
+      }
+    };
 
-        fetchAssignments();
-    }, [courseId]);
+    fetchAssignments();
+  }, [courseId]);
 
-    return (
-        <div className="assignments__container">
-            <h1>Assignments for Course</h1>
-            {assignments.length > 0 ? (
-                assignments.map((assignment) => (
-                    <div key={assignment._id} className="assignment">
-                        <h2>{assignment.title}</h2>
-                        <p>{assignment.description}</p>
-                        <p>Due Date: {new Date(assignment.dueDate).toLocaleDateString()}</p>
-                    </div>
-                ))
-            ) : (
-                <p>No assignments yet for this course.</p>
-            )}
-        </div>
-    );
+  if (loading) return <div>Loading assignments...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <div className="assignments__container">
+      <h1>Assignments</h1>
+      {assignments.length > 0 ? (
+        <ul className="assignments__list">
+          {assignments.map((assignment) => (
+            <li key={assignment._id} className="assignment__item">
+              <h3>{assignment.title}</h3>
+              <p><strong>Description:</strong> {assignment.description}</p>
+              <p><strong>Due Date:</strong> {new Date(assignment.dueDate).toLocaleDateString('en-CA', { timeZone: 'UTC' })}</p>
+              {assignment.instructions?.filePath && (
+                <a href={assignment.instructions.filePath} target="_blank" rel="noopener noreferrer">
+                  {assignment.instructions.fileName}
+                </a>
+              )}
+              <FileUpload assignmentId={assignment._id} />
+              <ViewSubmissions assignmentId={assignment._id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No assignments available for this course.</p>
+      )}
+      <Link to="/home/courses" className="back__link">Back to Courses</Link>
+    </div>
+  );
 };
 
 export default Assignments;
